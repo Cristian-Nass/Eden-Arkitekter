@@ -64,6 +64,14 @@
   }
 }
 
+.home-title-wrapper {
+  display: flex;
+  padding-top: 60px;
+  max-width: 1200px;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
 .home-title-box {
   background-color: #60712f;
   flex: 1;
@@ -80,4 +88,11 @@
 .home-title-box:hover {
   opacity: 0.9;
   scale: 1.03;
+}
+
+@media only screen and (max-width: 900px) {
+  .home-title-wrapper {
+    flex-direction: column;
+    height: 500px;
+  }
 }
