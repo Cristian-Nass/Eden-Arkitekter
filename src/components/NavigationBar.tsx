@@ -83,7 +83,16 @@ export default function NavigationBar(props: Props) {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Link to={item.path} key={item.id} style={{ color: "#fff" }}>
+              <Link
+                to={item.path}
+                key={item.id}
+                style={{
+                  color: "#fff",
+                  textTransform: "none",
+                  textDecoration: "none",
+                  margin: "0px 10px",
+                }}
+              >
                 {item.title}
               </Link>
             ))}

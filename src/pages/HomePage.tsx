@@ -1,7 +1,7 @@
 const HomePage = () => {
   return (
     <>
-      <div style={{ paddingTop: "30px" }}>Home Page</div>
+      <div style={{ paddingTop: "60px" }}>Welcome to Eden Arkitekter</div>
     </>
   );
 };
