@@ -42,15 +42,15 @@ export default function NavigationBar(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant='h6' sx={{ my: 2 }}>
-        MUI
+        Eden
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item.id} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item.title} />
-            </ListItemButton>
+          <ListItem key={item.title} disablePadding>
+            <Link to={item.path} className='mobile-view-buttons'>
+              {item.title}
+            </Link>
           </ListItem>
         ))}
       </List>
@@ -79,20 +79,11 @@ export default function NavigationBar(props: Props) {
             component='div'
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            Eden Arkitekter
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Link
-                to={item.path}
-                key={item.id}
-                style={{
-                  color: "#fff",
-                  textTransform: "none",
-                  textDecoration: "none",
-                  margin: "0px 10px",
-                }}
-              >
+              <Link to={item.path} key={item.id} className='navbar-link'>
                 {item.title}
               </Link>
             ))}

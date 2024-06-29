@@ -9,13 +9,19 @@
   text-decoration: none;
   color: #efefef;
   text-transform: none;
-  font-family: Quicksand;
   font-size: 16px;
   margin: 0px 6px;
   padding: 6px 4px;
 }
 
 .navbar-link:hover {
-  background-color: #1a90d9;
-  color: #2e537c;
+  color: #97c5f9;
+}
+
+.mobile-view-buttons {
+  text-decoration: none;
+  padding: 10px 0px 4px 10px;
+  width: 100%;
+  color: #086da3;
+  font-weight: bold;
 }
