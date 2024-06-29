@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,7 +12,8 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 interface Props {
   /**
@@ -23,8 +24,13 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
-
+// const navItems = ["Home", "About", "Contact"];
+const navItems = [
+  { title: "Home", path: "/", id: "1" },
+  { title: "Projekt", path: "/projects", id: "2" },
+  { title: "Om Oss", path: "/about", id: "3" },
+  { title: "Kontakt", path: "/contact", id: "4" },
+];
 export default function NavigationBar(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -41,9 +47,9 @@ export default function NavigationBar(props: Props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem key={item.id} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={item.title} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -77,9 +83,9 @@ export default function NavigationBar(props: Props) {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
-                {item}
-              </Button>
+              <Link to={item.path} key={item.id} style={{ color: "#fff" }}>
+                {item.title}
+              </Link>
             ))}
           </Box>
         </Toolbar>

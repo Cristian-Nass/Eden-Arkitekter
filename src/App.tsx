@@ -1,13 +1,21 @@
 import "./App.css";
 import NavigationBar from "./components/NavigationBar";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ContactUsPage from "./pages/ContactUsPage";
+import ProjectsPage from "./pages/ProjectsPage";
 
 function App() {
   return (
     <>
       <NavigationBar />
-      <div>
-        <h1>Eden Arkitekter</h1>
-      </div>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/projects' element={<ProjectsPage />} />
+        <Route path='/about' element={<AboutPage />} />
+        <Route path='/contact' element={<ContactUsPage />} />
+      </Routes>
     </>
   );
 }
