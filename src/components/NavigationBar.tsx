@@ -40,7 +40,7 @@ export default function NavigationBar(props: Props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant='h6' sx={{ my: 2, color: "#586957" }}>
+      <Typography variant='h6' sx={{ my: 2, color: "#60712f" }}>
         Eden Ark
       </Typography>
       <Divider />
