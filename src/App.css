@@ -27,13 +27,13 @@
 }
 
 .navbar-link:hover {
-  color: #97c5f9;
+  color: #cbfad2;
 }
 
 .mobile-view-buttons {
   text-decoration: none;
   padding: 10px 0px 4px 10px;
   width: 100%;
-  color: #086da3;
+  color: #87986a;
   font-weight: bold;
 }
