@@ -14,6 +14,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 // import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import EdenArkitekter from "./EdenArkitekter";
 
 interface Props {
   /**
@@ -74,13 +75,16 @@ export default function NavigationBar(props: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
+          {/* <Typography
             variant='h6'
             component='div'
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
             Eden Arkitekter
-          </Typography>
+          </Typography> */}
+          <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
+            <EdenArkitekter />
+          </Box>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
               <Link to={item.path} key={item.id} className='navbar-link'>

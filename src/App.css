@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,13 +7,23 @@
   text-align: center;
 }
 
+.playfair-font {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 .navbar-link {
   text-decoration: none;
-  color: #efefef;
+  color: #ffffff;
   text-transform: none;
-  font-size: 16px;
-  margin: 0px 6px;
+  font-size: 20px;
+  margin: 0px 16px;
   padding: 6px 4px;
+
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 .navbar-link:hover {
