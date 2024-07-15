@@ -1,5 +1,8 @@
 import betsi from "../assets/betsi.jpg";
+import { useDataStore } from "../store/useDataStore";
+
 const AboutPage = () => {
+  const { aboutUs } = useDataStore();
   return (
     <>
       <div className='about-us-wrapper-wrapper'>
@@ -22,26 +25,23 @@ const AboutPage = () => {
           ekosystemen.
         </div>
       </div>
-      <div className='about-us-wrapper-wrapper'>
-        <div
-          className='about-us-wrapper-img'
-          style={{
-            fontSize: "40px",
-            fontStyle: "italic",
-            opacity: "0.8",
-            fontFamily: "Playfair Display",
-            alignContent: "center",
-          }}
-        >
-          Vision
+      {aboutUs.map((abUs) => (
+        <div className='about-us-wrapper-wrapper' key={abUs.id}>
+          <div
+            className='about-us-wrapper-img'
+            style={{
+              fontSize: "40px",
+              fontStyle: "italic",
+              opacity: "0.8",
+              fontFamily: "Playfair Display",
+              alignContent: "center",
+            }}
+          >
+            {abUs.title}
+          </div>
+          <div className='about-us-wrapper-txt'>{abUs.descriptions}</div>
         </div>
-        <div className='about-us-wrapper-txt'>
-          Jag ser bebyggelsestruktur och grönstruktur som en sammanhängande
-          helhet, vilket främjar både estetik och hållbarhet. Vi välkomnar dig
-          att utforska våra projekt och ser fram emot att hjälpa dig att
-          förverkliga dina drömmar om en hållbar och harmonisk livsmiljö.
-        </div>
-      </div>
+      ))}
     </>
   );
 };
