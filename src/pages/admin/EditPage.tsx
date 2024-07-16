@@ -28,7 +28,12 @@ const EditPage = () => {
       });
   };
 
-  if (!user) return <>You are not LogIn ...!</>;
+  if (!user)
+    return (
+      <div style={{ paddingTop: matches ? "60px" : "20px" }}>
+        You are not LogIn ...!
+      </div>
+    );
 
   return (
     <div style={{ paddingTop: matches ? "60px" : "20px" }}>
