@@ -11,7 +11,8 @@ const EditPage = () => {
   };
 
   return (
-    <div style={{ paddingTop: "100px" }}>
+    <div style={{ paddingTop: "60px" }}>
+      <div>Log out</div>
       {aboutUs.map((abUs) => (
         <div key={abUs.id}>
           <div style={{ textAlign: "left", fontWeight: "bold" }}>
@@ -26,7 +27,7 @@ const EditPage = () => {
             </IconButton>
             {/* <IconButton color='primary' aria-label='edit'>
               <EditIcon />
-            </IconButton> */}
+              </IconButton> */}
             <EditModal
               title={abUs.title}
               descriptions={abUs.descriptions}
