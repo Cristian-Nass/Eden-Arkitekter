@@ -3,8 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -23,7 +21,7 @@ export default function SignInPage() {
     const email = data.get("email") as string;
     const password = data.get("password") as string;
     if (email && password) {
-      FirebaseServices.login(email.trim(), password)
+      FirebaseServices.logIn(email.trim(), password)
         .then(() => {
           navigate("/administration/edit");
         })
@@ -34,7 +32,7 @@ export default function SignInPage() {
   };
 
   return (
-    <Container component='main' maxWidth='xs'>
+    <Container component='main' maxWidth='xs' style={{ paddingTop: "6dvh" }}>
       <CssBaseline />
       <Box
         sx={{
@@ -71,10 +69,7 @@ export default function SignInPage() {
             id='password'
             autoComplete='current-password'
           />
-          <FormControlLabel
-            control={<Checkbox value='remember' color='primary' />}
-            label='Remember me'
-          />
+
           <Button
             type='submit'
             fullWidth

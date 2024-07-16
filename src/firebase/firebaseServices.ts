@@ -1,4 +1,4 @@
-import { Auth, signInWithEmailAndPassword } from "firebase/auth";
+import { Auth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { database, auth } from "./firebase";
 import { doc, updateDoc } from "firebase/firestore";
 
@@ -9,7 +9,7 @@ class Firebase {
     this.auth = auth;
   }
 
-  public async login(email: string, password: string) {
+  public async logIn(email: string, password: string) {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 
@@ -23,6 +23,10 @@ class Firebase {
       title,
       descriptions,
     });
+  }
+
+  public async logOut() {
+    return signOut(auth);
   }
 }
 
