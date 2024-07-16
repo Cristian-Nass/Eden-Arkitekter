@@ -8,7 +8,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import useUserStore from "../../store/useUserStore";
 
 const EditPage = () => {
-  const { logOut } = useUserStore();
+  const { user, logOut } = useUserStore();
   const navigate = useNavigate();
   const matches = useMediaQuery("(min-width:600px)");
 
@@ -27,6 +27,8 @@ const EditPage = () => {
         console.log("Something went wrong");
       });
   };
+
+  if (!user) return <>You are not LogIn ...!</>;
 
   return (
     <div style={{ paddingTop: matches ? "60px" : "20px" }}>
