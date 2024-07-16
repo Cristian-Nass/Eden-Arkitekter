@@ -10,10 +10,11 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useNavigate } from "react-router-dom";
-import FirebaseServices from "../../firebase/firebaseServices";
+import useUserStore from "../../store/useUserStore";
 
 export default function SignInPage() {
   const navigate = useNavigate();
+  const { logIn } = useUserStore();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,7 +22,7 @@ export default function SignInPage() {
     const email = data.get("email") as string;
     const password = data.get("password") as string;
     if (email && password) {
-      FirebaseServices.logIn(email.trim(), password)
+      logIn(email.trim(), password)
         .then(() => {
           navigate("/administration/edit");
         })
