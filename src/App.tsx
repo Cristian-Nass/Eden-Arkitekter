@@ -11,6 +11,8 @@ import { database } from "./firebase/firebase";
 import { useDataStore } from "./store/useDataStore";
 import { AboutUsType } from "./store/useDataStore";
 import "./App.css";
+import MainPage from "./pages/admin/MainPage";
+import EditPage from "./pages/admin/EditPage";
 
 function App() {
   const { setAboutUs } = useDataStore();
@@ -56,6 +58,10 @@ function App() {
           <Route path='/projects' element={<ProjectsPage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/contact' element={<ContactUsPage />} />
+          <Route path='/administration'>
+            <Route index element={<MainPage />} />
+            <Route path='edit' element={<EditPage />} />
+          </Route>
         </Routes>
       </ThemeProvider>
     </>
