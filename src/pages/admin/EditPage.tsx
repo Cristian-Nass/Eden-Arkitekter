@@ -5,10 +5,10 @@ import EditModal from "./EditModal";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
-import FirebaseServices from "../../firebase/firebaseServices";
+import useUserStore from "../../store/useUserStore";
 
 const EditPage = () => {
+  const { logOut } = useUserStore();
   const navigate = useNavigate();
   const matches = useMediaQuery("(min-width:600px)");
 
@@ -18,8 +18,8 @@ const EditPage = () => {
     return truncatedText;
   };
 
-  const logOut = () => {
-    FirebaseServices.logOut()
+  const logingOut = () => {
+    logOut()
       .then(() => {
         navigate("/");
       })
@@ -31,7 +31,7 @@ const EditPage = () => {
   return (
     <div style={{ paddingTop: matches ? "60px" : "20px" }}>
       <div style={{ textAlign: "right" }}>
-        <IconButton color='primary' aria-label='edit' onClick={logOut}>
+        <IconButton color='primary' aria-label='edit' onClick={logingOut}>
           <LogoutIcon />
         </IconButton>
       </div>

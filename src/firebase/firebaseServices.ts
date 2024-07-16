@@ -1,4 +1,4 @@
-import { Auth, signOut } from "firebase/auth";
+import { Auth } from "firebase/auth";
 import { database, auth } from "./firebase";
 import { doc, updateDoc } from "firebase/firestore";
 
@@ -25,9 +25,9 @@ class Firebase {
     });
   }
 
-  public async logOut() {
-    return signOut(auth);
-  }
+  // public async logOut() {
+  //   return signOut(auth);
+  // }
 }
 
 const FirebaseServices = new Firebase();

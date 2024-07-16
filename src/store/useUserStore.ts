@@ -8,6 +8,7 @@ interface UserState {
   loading: boolean;
   error: string | null;
   logIn: (email: string, password: string) => Promise<void>;
+  logOut: () => Promise<void>;
 }
 const useUserStore = create<UserState>((set) => ({
   user: null,
@@ -25,6 +26,16 @@ const useUserStore = create<UserState>((set) => ({
       set({ user: userCredential.user, loading: false, error: null });
     } catch (error) {
       set({ user: null, loading: false, error: "Somthing went wrong" });
+    }
+  },
+
+  logOut: async () => {
+    set({ loading: true, error: null });
+    try {
+      await auth.signOut();
+      set({ user: null, loading: false, error: null });
+    } catch (error) {
+      set({ loading: false, error: "Somthing went wrong" });
     }
   },
 }));
