@@ -28,7 +28,6 @@ function App() {
       } else {
         setIsAdmin(false);
       }
-      console.log("User Doc: ------>", userDoc);
     });
     return unsubscribe;
   }, [setIsAdmin]);

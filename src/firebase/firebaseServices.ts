@@ -14,9 +14,6 @@ class Firebase {
   // }
 
   public async editData(title: string, descriptions: string, id: string) {
-    console.log(id);
-    console.log(title);
-    console.log(descriptions);
     const section = "about-us";
     const docRef = doc(database, section, id);
     await updateDoc(docRef, {

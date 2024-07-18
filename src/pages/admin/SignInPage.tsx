@@ -22,7 +22,6 @@ export default function SignInPage() {
     const email = data.get("email") as string;
     const password = data.get("password") as string;
     if (email && password) {
-      console.log("LOGIN");
       logIn(email.trim(), password)
         .then(() => {
           navigate("/administration/edit");
