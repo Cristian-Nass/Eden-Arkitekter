@@ -11,7 +11,17 @@ const EditPage = () => {
       </div>
     );
 
-  return <div style={{ paddingTop: matches ? "60px" : "20px" }}></div>;
+  return (
+    <div
+      style={{
+        paddingTop: matches ? "60px" : "20px",
+        color: "gray",
+        opacity: "0.6",
+      }}
+    >
+      Select The Category you Wanna Update It
+    </div>
+  );
 };
 
 export default EditPage;
