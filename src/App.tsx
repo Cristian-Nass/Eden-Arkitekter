@@ -11,7 +11,7 @@ import { database } from "./firebase/firebase";
 import { useDataStore } from "./store/useDataStore";
 import { AboutUsType } from "./store/useDataStore";
 import "./App.css";
-import MainPage from "./pages/admin/MainPage";
+import AdminPage from "./pages/admin/AdminPage";
 import EditPage from "./pages/admin/EditPage";
 import EditAboutUs from "./pages/admin/EditAboutUs";
 import EditProject from "./pages/admin/EditProject";
@@ -75,7 +75,7 @@ function App() {
           <Route path='/about' element={<AboutPage />} />
           <Route path='/contact' element={<ContactUsPage />} />
           <Route path='/administration'>
-            <Route index element={<MainPage />} />
+            <Route index element={<AdminPage />} />
             <Route path='edit'>
               <Route index element={<EditPage />} />
               <Route path='about-us' element={<EditAboutUs />} />

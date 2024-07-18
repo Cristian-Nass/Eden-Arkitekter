@@ -1,6 +1,6 @@
 import SignInPage from "./SignInPage";
 
-const MainPage = () => {
+const AdminPage = () => {
   return (
     <>
       <SignInPage />
@@ -8,4 +8,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default AdminPage;
