@@ -13,9 +13,25 @@ import { AboutUsType } from "./store/useDataStore";
 import "./App.css";
 import MainPage from "./pages/admin/MainPage";
 import EditPage from "./pages/admin/EditPage";
+import EditAboutUs from "./pages/admin/EditAboutUs";
+import EditProject from "./pages/admin/EditProject";
+import { auth } from "./firebase/firebase";
+import useUserStore from "./store/useUserStore";
 
 function App() {
   const { setAboutUs } = useDataStore();
+  const { setIsAdmin } = useUserStore();
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((userDoc) => {
+      if (userDoc) {
+        setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
+      }
+      console.log("User Doc: ------>", userDoc);
+    });
+    return unsubscribe;
+  }, [setIsAdmin]);
 
   useEffect(() => {
     const getData = async () => {
@@ -60,7 +76,11 @@ function App() {
           <Route path='/contact' element={<ContactUsPage />} />
           <Route path='/administration'>
             <Route index element={<MainPage />} />
-            <Route path='edit' element={<EditPage />} />
+            <Route path='edit'>
+              <Route index element={<EditPage />} />
+              <Route path='about-us' element={<EditAboutUs />} />
+              <Route path='project' element={<EditProject />} />
+            </Route>
           </Route>
         </Routes>
       </ThemeProvider>

@@ -13,6 +13,8 @@ import Typography from "@mui/material/Typography";
 // import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import EdenArkitekter from "./EdenArkitekter";
+import AdminNavBar from "../pages/admin/AdminNavBar";
+import useUserStore from "../store/useUserStore";
 
 interface Props {
   /**
@@ -37,6 +39,7 @@ export default function NavigationBar(props: Props) {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+  const { isAdmin } = useUserStore();
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -60,58 +63,61 @@ export default function NavigationBar(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar component='nav'>
-        <Toolbar>
-          <IconButton
-            color='inherit'
-            aria-label='open drawer'
-            edge='start'
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          {/* <Typography
+    <>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppBar component='nav'>
+          <Toolbar>
+            <IconButton
+              color='inherit'
+              aria-label='open drawer'
+              edge='start'
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            {/* <Typography
             variant='h6'
             component='div'
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
+            >
             Eden Arkitekter
-          </Typography> */}
-          <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
-            <EdenArkitekter />
-          </Box>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
-              <Link to={item.path} key={item.id} className='navbar-link'>
-                {item.title}
-              </Link>
-            ))}
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <nav>
-        <Drawer
-          container={container}
-          variant='temporary'
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </nav>
-    </Box>
+            </Typography> */}
+            <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
+              <EdenArkitekter />
+            </Box>
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+              {navItems.map((item) => (
+                <Link to={item.path} key={item.id} className='navbar-link'>
+                  {item.title}
+                </Link>
+              ))}
+            </Box>
+          </Toolbar>
+        </AppBar>
+        <nav>
+          <Drawer
+            container={container}
+            variant='temporary'
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { xs: "block", sm: "none" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+              },
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </nav>
+      </Box>
+      {isAdmin && <AdminNavBar />}
+    </>
   );
 }

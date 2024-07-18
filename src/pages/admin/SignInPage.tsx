@@ -14,7 +14,7 @@ import useUserStore from "../../store/useUserStore";
 
 export default function SignInPage() {
   const navigate = useNavigate();
-  const { user, logIn } = useUserStore();
+  const { logIn } = useUserStore();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -22,11 +22,10 @@ export default function SignInPage() {
     const email = data.get("email") as string;
     const password = data.get("password") as string;
     if (email && password) {
+      console.log("LOGIN");
       logIn(email.trim(), password)
         .then(() => {
-          if (user) {
-            navigate("/administration/edit");
-          }
+          navigate("/administration/edit");
         })
         .catch(() => {
           console.log("Something went wrong");
