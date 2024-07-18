@@ -2,14 +2,12 @@ import { useDataStore } from "../../store/useDataStore";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditModal from "./EditModal";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { useNavigate } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import useUserStore from "../../store/useUserStore";
+import AdminNavBar from "./AdminNavBar";
 
 const EditPage = () => {
-  const { user, logOut } = useUserStore();
-  const navigate = useNavigate();
+  const { user } = useUserStore();
   const matches = useMediaQuery("(min-width:600px)");
 
   const { aboutUs } = useDataStore();
@@ -18,15 +16,15 @@ const EditPage = () => {
     return truncatedText;
   };
 
-  const logingOut = () => {
-    logOut()
-      .then(() => {
-        navigate("/");
-      })
-      .catch(() => {
-        console.log("Something went wrong");
-      });
-  };
+  // const logingOut = () => {
+  //   logOut()
+  //     .then(() => {
+  //       navigate("/");
+  //     })
+  //     .catch(() => {
+  //       console.log("Something went wrong");
+  //     });
+  // };
 
   if (!user)
     return (
@@ -37,11 +35,7 @@ const EditPage = () => {
 
   return (
     <div style={{ paddingTop: matches ? "60px" : "20px" }}>
-      <div style={{ textAlign: "right" }}>
-        <IconButton color='primary' aria-label='edit' onClick={logingOut}>
-          <LogoutIcon />
-        </IconButton>
-      </div>
+      <AdminNavBar />
       {aboutUs.map((abUs) => (
         <div key={abUs.id}>
           <div style={{ textAlign: "left", fontWeight: "bold" }}>
