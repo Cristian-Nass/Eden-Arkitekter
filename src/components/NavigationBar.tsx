@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 // import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import EdenArkitekter from "./EdenArkitekter";
-import AdminNavBar from "../pages/admin/AdminNavBar";
+import AdminNavBar from "./admin/AdminNavBar";
 import useUserStore from "../store/useUserStore";
 
 interface Props {

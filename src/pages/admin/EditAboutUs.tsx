@@ -1,12 +1,13 @@
 import { useDataStore } from "../../store/useDataStore";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditModal from "./EditModal";
+import EditModal from "../../components/admin/EditModal";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import useUserStore from "../../store/useUserStore";
+import { Divider } from "@mui/material";
 
 const EditAboutUs = () => {
-  const { user } = useUserStore();
+  const { isAdmin } = useUserStore();
   const matches = useMediaQuery("(min-width:600px)");
 
   const { aboutUs } = useDataStore();
@@ -15,7 +16,7 @@ const EditAboutUs = () => {
     return truncatedText;
   };
 
-  if (!user)
+  if (!isAdmin)
     return (
       <div style={{ paddingTop: matches ? "60px" : "20px" }}>
         You are not LogIn ...!
@@ -23,9 +24,10 @@ const EditAboutUs = () => {
     );
 
   return (
-    <div style={{ paddingTop: matches ? "60px" : "20px" }}>
+    <div style={{ paddingTop: matches ? "20px" : "20px" }}>
       {aboutUs.map((abUs) => (
         <div key={abUs.id}>
+          <Divider />
           <div style={{ textAlign: "left", fontWeight: "bold" }}>
             {abUs.title}
           </div>
