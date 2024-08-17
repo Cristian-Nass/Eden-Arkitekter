@@ -9,7 +9,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { collection, getDocs } from "firebase/firestore";
 import { database } from "./firebase/firebase";
 import { useDataStore } from "./store/useDataStore";
-import { AboutUsType } from "./store/useDataStore";
+import { AboutUsType, ProjectType } from "./store/useDataStore";
 import "./App.css";
 import AdminPage from "./pages/admin/AdminPage";
 import EditPage from "./pages/admin/EditPage";
@@ -19,7 +19,7 @@ import { auth } from "./firebase/firebase";
 import useUserStore from "./store/useUserStore";
 
 function App() {
-  const { setAboutUs } = useDataStore();
+  const { setAboutUs, setProjects } = useDataStore();
   const { setIsAdmin } = useUserStore();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userDoc) => {
@@ -37,17 +37,22 @@ function App() {
       const querySnapshot = await getDocs(collection(database, "about-us"));
       const aboutUsData: AboutUsType[] = [];
       querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        // console.log(doc.id, " => ", doc.data());
-        // const au: AboutUsType = {
-        //   ...doc.data(),
-        // };
         aboutUsData.push({ ...doc.data(), id: doc.id } as AboutUsType);
       });
       setAboutUs(aboutUsData);
     };
+    const getProjectsData = async () => {
+      const querySnapshot = await getDocs(collection(database, "projects"));
+      const projectsData: ProjectType[] = [];
+      querySnapshot.forEach((doc) => {
+        projectsData.push({ ...doc.data(), id: doc.id } as ProjectType);
+      });
+      setProjects(projectsData);
+    };
     getData();
-  }, [setAboutUs]);
+    getProjectsData();
+  }, [setAboutUs, setProjects]);
+
   const theme = createTheme({
     palette: {
       primary: {
