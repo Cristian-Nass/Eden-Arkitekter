@@ -14,6 +14,7 @@ const ProjectsPage = () => {
             opacity: "0.8",
             fontFamily: "Playfair Display",
             alignContent: "center",
+            padding: "20px 0px",
           }}
         >
           Utvalda Projekt
