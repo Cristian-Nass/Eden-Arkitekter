@@ -1,19 +1,52 @@
+import { useRef } from "react";
+import { useParams } from "react-router-dom";
+import { useDataStore } from "../../store/useDataStore";
+import { useDragScroll } from "../../hooks/useDragScroll";
+
+import "./selected-project.css";
+
 const SelectedProject = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const { handleMouseDown, handleMouseLeave, handleMouseUp, handleMouseMove } =
+    useDragScroll(scrollContainerRef);
+
+  const { projectId } = useParams();
+  const { projects } = useDataStore();
+  const project = projects.find((p) => p.id === projectId);
+
   return (
     <>
       <div className='about-us-wrapper-wrapper'>
         <div
           className='about-us-wrapper-img'
           style={{
-            fontSize: "40px",
+            fontSize: "30px",
             fontStyle: "italic",
-            opacity: "0.8",
             fontFamily: "Playfair Display",
-            alignContent: "center",
-            padding: "20px 20px",
           }}
         >
-          Selected Projekt
+          {project?.title}
+        </div>
+      </div>
+      <div className='slidebar-wrapper'>
+        <div
+          className='media-scroller'
+          ref={scrollContainerRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+        >
+          {project?.images?.map((project) => (
+            <div key={project} className='media-element'>
+              <img
+                src={project}
+                alt={project}
+                className='image-unselect'
+                draggable='false'
+              />
+            </div>
+          ))}
         </div>
       </div>
     </>
