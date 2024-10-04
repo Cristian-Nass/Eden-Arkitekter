@@ -20,7 +20,7 @@ const SelectedProject = () => {
         <div
           className='about-us-wrapper-img'
           style={{
-            fontSize: "40px",
+            fontSize: "30px",
             fontStyle: "italic",
             fontFamily: "Playfair Display",
             paddingBottom: "20px",
@@ -50,7 +50,7 @@ const SelectedProject = () => {
           ))}
         </div>
       </div>
-      <div style={{ textAlign: "left", padding: "10px 0px", fontSize: "22px" }}>
+      <div style={{ textAlign: "left", padding: "10px 0px", fontSize: "18px" }}>
         {project?.descriptions}
       </div>
     </>
