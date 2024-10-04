@@ -12,6 +12,7 @@ export interface ProjectType {
   descriptions: string;
   image: string;
   id?: string;
+  images?: string[];
 }
 interface DataStoreType {
   aboutUs: AboutUsType[];

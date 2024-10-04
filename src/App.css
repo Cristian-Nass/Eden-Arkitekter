@@ -50,18 +50,34 @@
   text-align: justify;
   padding-left: 60px;
 }
+.project-parent {
+  display: grid;
+  max-width: 1400px;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 20px;
+  padding: 0px 10px;
+}
 
 .projects-wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   text-align: left;
   background-color: #ebf2d7;
   border-radius: 16px;
   padding: 6px;
   margin: 10px;
 }
+
 .projects-wrapper-img > img {
   width: 100%;
+  border-radius: 4%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.projects-wrapper-img > img:hover {
+  scale: 1.04;
 }
 
 .projects-wrapper-txt {
@@ -72,7 +88,7 @@
 .project-title-txt {
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
-  font-size: 30px;
+  font-size: 22px;
   font-style: italic;
 }
 @media only screen and (max-width: 900px) {

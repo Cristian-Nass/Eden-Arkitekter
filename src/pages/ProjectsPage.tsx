@@ -19,19 +19,19 @@ const ProjectsPage = () => {
         >
           Utvalda Projekt
         </div>
-        <div className='about-us-wrapper-txt'></div>
       </div>
-      {projects.map((project) => (
-        <div key={project.id} className='projects-wrapper'>
-          <div className='projects-wrapper-img' style={{ flex: "1" }}>
-            <img src={project.image} alt={project.title} />
+      <div className='project-parent'>
+        {projects.map((project) => (
+          <div key={project.id} className='projects-wrapper'>
+            <div className='projects-wrapper-img' style={{ flex: "1" }}>
+              <img src={project.image} alt={project.title} />
+            </div>
+            <div className='projects-wrapper-txt' style={{ flex: "2" }}>
+              <div className='project-title-txt'>{project.title}</div>
+            </div>
           </div>
-          <div className='projects-wrapper-txt' style={{ flex: "2" }}>
-            <div className='project-title-txt'>{project.title}</div>
-            <div>{project.descriptions}</div>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </>
   );
 };
