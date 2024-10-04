@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 export interface AboutUsType {
   title: string;
@@ -19,21 +20,45 @@ interface DataStoreType {
   setProjects: (projects: ProjectType[]) => void;
 }
 
-export const useDataStore = create<DataStoreType>((set) => ({
-  aboutUs: [],
-  projects: [],
-  setAboutUs: (aboutUsData: AboutUsType[]) => {
-    set(() => {
-      return {
-        aboutUs: aboutUsData,
-      };
-    });
-  },
-  setProjects: (projects: ProjectType[]) => {
-    set(() => {
-      return {
-        projects: projects,
-      };
-    });
-  },
-}));
+export const useDataStore = create<DataStoreType>()(
+  devtools(
+    (set) => ({
+      aboutUs: [],
+      projects: [],
+      setAboutUs: (aboutUsData: AboutUsType[]) => {
+        set(() => {
+          return {
+            aboutUs: aboutUsData,
+          };
+        });
+      },
+      setProjects: (projects: ProjectType[]) => {
+        set(() => {
+          return {
+            projects: projects,
+          };
+        });
+      },
+    }),
+    { name: "UserStore" } // Optional: Name for the devtools instance
+  )
+);
+
+// export const useDataStore = create<DataStoreType>((set) => ({
+//   aboutUs: [],
+//   projects: [],
+//   setAboutUs: (aboutUsData: AboutUsType[]) => {
+//     set(() => {
+//       return {
+//         aboutUs: aboutUsData,
+//       };
+//     });
+//   },
+//   setProjects: (projects: ProjectType[]) => {
+//     set(() => {
+//       return {
+//         projects: projects,
+//       };
+//     });
+//   },
+// }));
