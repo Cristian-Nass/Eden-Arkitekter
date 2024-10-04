@@ -17,6 +17,7 @@ import EditAboutUs from "./pages/admin/EditAboutUs";
 import EditProject from "./pages/admin/EditProject";
 import { auth } from "./firebase/firebase";
 import useUserStore from "./store/useUserStore";
+import SelectedProject from "./pages/projects/SelectedProject";
 
 function App() {
   const { setAboutUs, setProjects } = useDataStore();
@@ -75,7 +76,12 @@ function App() {
         <NavigationBar />
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/projects' element={<ProjectsPage />} />
+
+          <Route path='/projects'>
+            <Route index element={<ProjectsPage />} />
+            <Route path=':projectId' element={<SelectedProject />} />
+          </Route>
+
           <Route path='/about' element={<AboutPage />} />
           <Route path='/contact' element={<ContactUsPage />} />
           <Route path='/administration'>
